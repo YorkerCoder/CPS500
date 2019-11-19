@@ -1,3 +1,5 @@
+#projectForCps500GUI.py
+
 from projectForCPS500 import *
 from graphics import *
 
@@ -53,6 +55,8 @@ class GUI():
         #set the stock
         self.stock = Stock(tickerEntry.getText(), startEntry.getText(), endEntry.getText())
 
+
+    def prompt(self):
         #tell them what they can press to get data
         Text(Point(5,9),"Press q to quit").draw(self.win)
         Text(Point(5,8),"Press d to get a graph of the data").draw(self.win)
@@ -62,32 +66,48 @@ class GUI():
         Text(Point(5,4),"Press g for a histogram vs a gaussian distribution").draw(self.win)
         Text(Point(5,3),"Press s for statistics").draw(self.win)
 
-
-
     def handle_key(self, key):
         if key  == 'd':
-            #graph the datax
-            self.stock.graph_data()
+            #graph the data
+            try:
+                self.stock.graph_data()
+            except Exception as e:
+                print("An exception occured in handle key at d")
 
         elif key == 'a':
             #graph the daily returns
-            self.stock.daily_return()
+            try:
+                self.stock.daily_return()
+            except Exception as e:
+                print("An exception occured in handle key at a")
 
         elif key == 'm':
             #graph the monthly returns
-            self.stock.monthly_return()
+            try:
+                self.stock.monthly_return()
+            except Exception as e:
+                print("An exception occured in handle key at m")
 
         elif key == 'h':
            #plot a histogram
-            self.stock.histo()
+           try:
+               self.stock.histo()
+           except Exception as e:
+               print("An exception occured in handle key at h")
 
         elif key == 'g':
             #graph the histogram and gaussian distribution
-            self.stock.histo_gaus()
+            try:
+                self.stock.histo_gaus()
+            except Exception as e:
+                print("An exception occured in handle key at g")
 
         elif key == 's':
             #display the stats
-            self.stock.stats()
+            try:
+                self.stock.stats()
+            except Exception as e:
+                print("An exception occured in handle key at s")
 
         else:
             print("You did nothing")
@@ -97,7 +117,7 @@ def main():
     gui = GUI()
     #get the stock
     gui.handle_enter()
-
+    gui.prompt()
     while True:
         #get their key
         key = gui.win.getKey()

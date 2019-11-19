@@ -1,4 +1,4 @@
-#stockClass.py
+#projectForCps500.py 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt#plots stuff
@@ -6,7 +6,9 @@ import pandas_datareader as web#extracts data off the internet
 from scipy.stats import skew#is a method that lets us get the skew of data
 import random
 from pandas.plotting import register_matplotlib_converters
-register_matplotlib_converters()
+register_matplotlib_converters()#This will explicitly convery date time for us
+plt.ion()#makes all plots interactive instead of static so when you close out of them
+            #   It doesn't just hang in the terminal
 
 class Stock():
     def __init__(self, ticker, startDate, endDate):
@@ -64,7 +66,7 @@ class Stock():
     def histo(self):
         fig = plt.figure()
         axis = fig.add_axes([0.1, 0.1, 0.8, 0.8])
-        self.daily_percent_difference().plot.hist(bins = 60)
+        self.daily_percent_difference().plot.hist(bins = 100)#bins is how many rectangles to use
         axis.set_xlabel("Daily returns %")
         axis.set_ylabel("Percent")
         axis.set_title(self.ticker + " daily returns data")
@@ -86,7 +88,7 @@ class Stock():
         plt.xlabel("%")
         plt.ylabel("% Difference")
         plt.show()
-        ply/
+
     #Get the stats #Note that these are all lambda functions
     #mean of the daily returns
     daily_return_mean = lambda self : np.mean(self.daily_percent_difference())
