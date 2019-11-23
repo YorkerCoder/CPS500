@@ -5,7 +5,7 @@ from graphics import *
 
 class GUI():
     def __init__(self,):
-        self.stock = ""#just an empty thing for right now before they initialize it 
+        self.stock = ""#just an empty thing for right now before they initialize it
         self.win = GraphWin("Stocks", 400, 400)
         self.win.setBackground('#ca4b32')
         self.win.setCoords(0,0,10,10)
@@ -53,7 +53,7 @@ class GUI():
         endEntry.undraw()
 
         #set the stock
-        self.stock = Stock(tickerEntry.getText(), startEntry.getText(), endEntry.getText())
+        self.stock = Stock(tickerEntry.getText().upper(), startEntry.getText(), endEntry.getText())
 
 
     def prompt(self):
