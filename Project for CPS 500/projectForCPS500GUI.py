@@ -5,7 +5,7 @@ from graphics import *
 
 class GUI():
     def __init__(self,):
-        self.stock = Stock('NFLX', '2009-01-01', '2018-01-1')
+        self.stock = ""#just an empty thing for right now before they initialize it 
         self.win = GraphWin("Stocks", 400, 400)
         self.win.setBackground('#ca4b32')
         self.win.setCoords(0,0,10,10)
@@ -65,6 +65,7 @@ class GUI():
         Text(Point(5,5),"Press h for a histogram of percent vs daily returns").draw(self.win)
         Text(Point(5,4),"Press g for a histogram vs a gaussian distribution").draw(self.win)
         Text(Point(5,3),"Press s for statistics").draw(self.win)
+        Text(Point(5,2),"Press q to also quit out of a graph").draw(self.win)
 
     def handle_key(self, key):
         if key  == 'd':
@@ -121,10 +122,12 @@ def main():
     while True:
         #get their key
         key = gui.win.getKey()
+        #check if they pressed q
         if key == 'q':
             break
+        #if they didn't press q then this is reachable and we can handle the key
         gui.handle_key(key)
-
+    #close the window
     gui.win.close()
 
 
