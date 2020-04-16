@@ -1,4 +1,4 @@
-#projectForCps500.py 
+#projectForCps500.py
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt#plots stuff
